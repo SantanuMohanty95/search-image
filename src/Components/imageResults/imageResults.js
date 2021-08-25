@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {GridList,GridTile} from '@material-ui/core/GridList/index';
 import IconButton from '@material-ui/core/IconButton';
 import ZoomInIcon from '@material-ui/icons/ZoomIn';
-import { Dialog } from '@material-ui/core';
+import { Dialog, Grid } from '@material-ui/core';
 // import Dialog from '@material-ui/core/Dialog';
 import Button from '@material-ui/core/Button';
 
@@ -23,43 +23,14 @@ class ImageResults extends Component{
         let imageList;
         const {images}=this.props
 
-        // if(images){
-        //     imageList=(
-        //         <GridList cols={4}>
-        //             {
-        //                 images.map(img=>(
-        //                     <GridTile 
-        //                     title={img.tags}
-        //                     key={img.id}
-        //                     actionIcon={
-        //                         <IconButton onClick={()=>this.handleOPen(img.largeImageURL)}>
-        //                             <ZoomInIcon color="white" />
-        //                         </IconButton>
-        //                     }>
-        //                         <img src={img.largeImageURL} alt="" />
-        //                     </GridTile>
-        //                 ))
-        //             }
-        //         </GridList>
-        //     )
-        // } else {
-        //     imageList=null;
-        // }
-        // const actions=[
-        //     <Button label='close' primary={true} onClick={this.handleClose} />
-        // ]
+     
+    
         console.log(images,"image")
         return(
             <div>
-                {images.map((each)=><li><img src={each.largeImageURL} /></li>)}
-                {/* {imageList}
-                <Dialog
-                    actions={actions}
-                    modal={false}
-                    open={this.state.open}
-                    onRequestClose={this.handleClose}>
-                        <img src={this.state.currentImg} alt='' style={{width:"100%"}}/>
-                </Dialog> */}
+                <Grid container style={{marginLeft:"20px", marginTop:"20px"}}>
+                {images.map((each)=><Grid item sm={6} lg={4} md={4} style={{marginBottom:'20px'}} ><img src={each.largeImageURL} height="400" width="400"/></Grid>)}
+                </Grid>
             </div>
         )
     }
